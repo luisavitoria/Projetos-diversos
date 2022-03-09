@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #CFD8DC;
+            font-family: 'Poppins', sans-serif;
+            color: #fff;
+            font-size: 62.5%;
+          
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .toDoList {
+            margin: 5rem 0 2rem 0;
+            padding: 1rem 2rem 4rem 2rem;
+            background-color: #607D8B;
+            border-radius: 10px;
+        }
+
+        .toDoList h1 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .form {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form input {
+            width: 50%;
+            padding: 0.5rem;
+            margin-right: 1rem;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 0.5em 1em rgba(0,0,0,0.15);
+        }
+
+        .form input:focus {
+            outline: none;
+        }
+
+        .form button {
+            width: 40%;
+            padding: 0.5rem;
+            background-color: #009688;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 0.5em 1em rgba(0,0,0,0.15);
+            cursor: pointer;
+        }
+
+        .form button:hover {
+            opacity: 0.7;
+        }
+
+        .list {
+            margin: 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .list ul {
+            list-style-type: square;
+        }
+
+        .list ul li {
+            margin-bottom: 1rem;
+        }
+
+        .list ul button {
+            background-color: #F44336;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 0.5em 1em rgba(0,0,0,0.15);
+            cursor: pointer;
+            position: absolute;
+            right: 0;
+            padding: 0.2rem;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+    <div class="toDoList">
+        <h1>to do list</h1>
+
+        <div class="form">
+            <form action="">
+                <input type="text" placeholder="new task">
+                <button type="submit">Add new task</button>
+            </form>
+        </div>
+
+        <div class="list">
+            <ul>
+
+            </ul>
+        </div>
+    
+    </div>
+    </div>
+
+    <script>
+        const inputElement = document.querySelector('input')
+        const buttonNewTask = document.querySelector('button') 
+        const ulElement = document.querySelector('ul')
+
+        buttonNewTask.onclick = evento => {
+            evento.preventDefault()
+
+            if(inputElement.value) {
+
+                const textElement = document.createElement('span')
+                textElement.innerHTML = inputElement.value
+
+                const buttonRemove = document.createElement('button')
+                buttonRemove.innerHTML = "remove"
+
+                const liElement = document.createElement('li')
+                liElement.appendChild(textElement)
+                liElement.appendChild(buttonRemove)
+
+                buttonRemove.onclick = evento => {
+                    evento.preventDefault()
+                    ulElement.removeChild(liElement)
+                }
+
+                ulElement.appendChild(liElement)
+                inputElement = ''
+
+            }
+
+        }
+    </script>
+</body>
+</html>
